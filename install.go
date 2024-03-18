@@ -1,4 +1,4 @@
-package main
+package lxc
 
 func (c *Client) InstallServer(name string, password string, port int) error {
 	err := setPassword(name, password)
