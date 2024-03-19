@@ -27,10 +27,9 @@ type Server struct {
 }
 
 type CreateServerParams struct {
-	Memory         int
-	Storage        int
-	Cores          int
-	ForwardedPorts []string
+	Memory  int
+	Storage int
+	Cores   int
 }
 
 type Resources struct {
