@@ -10,7 +10,7 @@ func (c *Client) ForwardPorts(name string, ports []int) error {
 	for _, port := range ports {
 		listen := fmt.Sprintf("listen=tcp:0.0.0.0:%d", port)
 		connect := fmt.Sprintf("connect=tcp:127.0.0.1:%d", port)
-		portName := fmt.Sprintf("port%d", port)
+		portName := fmt.Sprintf("forward_%d", port)
 		cmd := exec.Command("lxc", "config", "device", "add", name, portName, "proxy", listen, connect)
 		cmd.Stdout = os.Stdout
 		cmd.Stderr = os.Stderr

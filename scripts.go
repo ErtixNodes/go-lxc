@@ -37,9 +37,11 @@ func initSSH(name string, port int) error {
 		"echo 'PermitRootLogin yes' >> /etc/ssh/sshd_config",
 		"echo 'IgnoreUserKnownHosts no' >> /etc/ssh/sshd_config",
 		"echo 'PasswordAuthentication yes' >> /etc/ssh/sshd_config",
+		"echo 'PubkeyAuthentication yes' >> /etc/ssh/sshd_config",
 		"sed -i '/UsePAM yes/c\\UsePAM no' /etc/ssh/sshd_config",
 		fmt.Sprintf("echo 'Port %d' >> /etc/ssh/sshd_config", port),
-		"ssh-keygen -t rsa -f /root/.ssh/id_rsa -q -P \"\"",
+		"ssh-keygen -q -t rsa -N '' -f ~/.ssh/id_rsa <<<y >/dev/null 2>&1",
+		"ssh-add",
 		"service ssh restart",
 		"service sshd restart",
 	}
