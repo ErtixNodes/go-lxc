@@ -7,9 +7,10 @@ import (
 
 type Client struct {
 	Remote string
+	Host   string
 }
 
-func New(remote string) (*Client, error) {
+func New(remote string, ip string) (*Client, error) {
 	cmd := exec.Command("lxc", "remote", "switch", remote)
 	err := cmd.Run()
 	if err != nil {
@@ -18,5 +19,6 @@ func New(remote string) (*Client, error) {
 
 	return &Client{
 		Remote: remote,
+		Host:   ip,
 	}, nil
 }

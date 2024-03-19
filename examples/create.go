@@ -10,7 +10,7 @@ import (
 )
 
 func main() {
-	client, err := lxc.New("vm")
+	client, err := lxc.New("vps", "127.0.0.1")
 	if err != nil {
 		panic(err)
 	}
